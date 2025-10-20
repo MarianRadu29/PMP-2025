@@ -4,18 +4,18 @@ import matplotlib.pyplot as plt
 
 
 def simulate_experiment():
-    urn = np.array(['R'] * 3 + ['A'] * 4 + ['N'] * 2)
-    
+    urn = ['R'] * 3 + ['A'] * 4 + ['N'] * 2
+
     die = np.random.randint(1, 7)
-    
-    if die in [2, 3, 5]:        
+
+    if die in [2, 3, 5]:
         urn.append('N')
     elif die == 6:
         urn.append('R')
-    else:                     
+    else:
         urn.append('A')
-    
-    extracted_ball = np.random.choice(np.random.shuffle(urn))
+
+    extracted_ball = np.random.choice(urn)
     return extracted_ball
 
 
