@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from hmmlearn import hmm
 from matplotlib import patheffects
 import networkx as nx
+from viterbi_bonus import HMM,viterbi
 
 states = ["D", "M", "E"]  # Difficult, Medium, Easy
 state_full = {"D": "Difficult", "M": "Medium", "E": "Easy"}
@@ -19,6 +20,7 @@ transition_matrix = np.array([
 
 # distributia initiala pi
 pi = np.array([1/3, 1/3, 1/3], dtype=float)
+
 
 # emisia probabilitatilor B ( randuri: stari D,M,E; coloane: observatii FB,B,S,NS)
 emission_prob = np.array([
@@ -60,6 +62,7 @@ print(f"   Observatii:    {obs_seq}")
 print(f"   Stari:         {best_path_labels}")
 print(f"   P(secventa optima) = {prob_viterbi:.10f}")
 print("\n\n\n")
+
 
 
 
@@ -153,3 +156,18 @@ plt.axis('off')
 plt.tight_layout()
 plt.savefig("Lab05/state_diagram.png", dpi=150, bbox_inches='tight')
 # plt.show()
+
+
+
+
+# BONUS
+
+# HMM este in fisierul viterbi_bonus.py
+
+hmm = HMM(states, grades,pi.copy(),transition_matrix.copy(),emission_prob.copy())
+log_prob_viterbi,path_viterbi = viterbi(hmm, obs_seq) 
+
+print(f"   Observatii:    {obs_seq}")
+print(f"   Stari:         {path_viterbi}")
+print(f"   P(secventa optima) = {log_prob_viterbi:.10f}")
+print("\n\n\n")
