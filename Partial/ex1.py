@@ -69,9 +69,11 @@ map_query = inference.map_query(['H', 'W'], evidence={'C': 0})  # MAP pentru H, 
 
 print(p_H_conditionat_C)
 print(p_E_conditionat_C)
-print(map_query)
+print(f"Map estimate: {map_query}")
 
-# trebuie subpunctul c facut
+
+# la ce am rezolvat pe foaie de examen
+
 
 
 
